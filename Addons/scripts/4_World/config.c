@@ -3,7 +3,7 @@ class JSON_CFG_D_MANAGER
 	string WebHookURL_JoinLeave					= "";
 	string WebHookURL_KillFeed					= "";
 	string WebHookURL_Admin						= "";
-	string WebHookURL_Restart					= "";
+	string WebHookURL_ServerStatus				= "";
 }
 class DiscordWebhookManagerConfig
 {

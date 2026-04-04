@@ -18,7 +18,7 @@ modded class MissionServer
 		dataJSON.SetSettings(msg);
 		dataJSON.SetEmbeds(embeds);
 
-		GetDiscordHook().Send("restart", dataJSON);
+		GetDiscordHook().Send("serverstatus", dataJSON);
 	}
 
 	override void OnMissionFinish()
@@ -37,7 +37,7 @@ modded class MissionServer
 		dataJSON.SetSettings(msg);
 		dataJSON.SetEmbeds(embeds);
 
-		GetDiscordHook().Send("restart", dataJSON);
+		GetDiscordHook().Send("serverstatus", dataJSON);
 
 		super.OnMissionFinish();
 	}

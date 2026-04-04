@@ -17,7 +17,7 @@ modded class MissionServer
 		if (cfg.WebHookURL_Admin != "")
 			GetDiscordHook().SetAlias("admin", cfg.WebHookURL_Admin);
 
-		if (cfg.WebHookURL_Restart != "")
-			GetDiscordHook().SetAlias("restart", cfg.WebHookURL_Restart);
+		if (cfg.WebHookURL_ServerStatus != "")
+			GetDiscordHook().SetAlias("serverstatus", cfg.WebHookURL_ServerStatus);
 	}
 }
