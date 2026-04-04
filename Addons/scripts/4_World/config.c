@@ -1,7 +1,9 @@
 class JSON_CFG_D_MANAGER
 {
-	string WebHookLink							= "WebHookLink this";
-	//for Adding your own Webhooks, specify here
+	string WebHookURL_JoinLeave					= "";
+	string WebHookURL_KillFeed					= "";
+	string WebHookURL_Admin						= "";
+	string WebHookURL_Restart					= "";
 }
 class DiscordWebhookManagerConfig
 {
