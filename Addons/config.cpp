@@ -33,17 +33,17 @@ class CfgMods
 			class gameScriptModule
 			{
 				value = "";
-				files[] = {"scripts/3_Game"};
+				files[] = {"DiscordWebhooks/scripts/3_Game"};
 			};
 			class worldScriptModule
 			{
 				value = "";
-				files[] = {"scripts/4_World"};
+				files[] = {"DiscordWebhooks/scripts/4_World"};
 			};
 			class missionScriptModule
 			{
 				value = "";
-				files[] = {"scripts/5_Mission"};
+				files[] = {"DiscordWebhooks/scripts/5_Mission"};
 			};
 		};
 	};
