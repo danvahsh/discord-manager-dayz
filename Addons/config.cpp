@@ -1,59 +1,49 @@
 class CfgPatches
 {
-	class DiscordWebhookManager
+	class DiscordWebhooks
 	{
 		units[] = {};
 		weapons[] = {};
-		requiredVersion=0.1;
-		requiredAddons[]={
-			"DZ_Data"
-		};
+		requiredVersion = 0.1;
+		requiredAddons[] = {"DZ_Data"};
 	};
-	
-	class DiscordWebhookManagerDefine {
-        units[] = {};
-        weapons[] = {};
-        requiredVersion = 0.1;
-        requiredAddons[] = {};
-    };
 };
+
 class CfgMods
 {
-	class DiscordWebhookManager
+	class DiscordWebhooks
 	{
-		dir = "DiscordWebhookManager";
-	    picture = "";
-	    action = "";
-	    hideName = 0;
-	    hidePicture = 1;
-	    name = "DiscordWebhookManager";
-	    credits = "76561198727370586";
-	    author = "DiscordManager by danvahsh";
-	    authorID = "76561198727370586";
-	    version = "1.0";
-	    extra = 0;
-	    type = "mod";
-		
+		dir = "DiscordWebhooks";
+		picture = "";
+		action = "";
+		hideName = 0;
+		hidePicture = 1;
+		name = "DiscordWebhooks";
+		credits = "76561198727370586";
+		author = "danvahsh";
+		authorID = "76561198727370586";
+		version = "1.0";
+		extra = 0;
+		type = "mod";
+
 		dependencies[] = {"Game", "World", "Mission"};
-		
-		defines[] = {
-            "DiscordWebhookManager",
-			"DiscordWebhookManagerDefine"
-        };
+
 		class defs
 		{
 			class gameScriptModule
 			{
 				value = "";
-				files[] = {"DiscordWebhookManager/scripts/3_Game"};
+				files[] = {"scripts/3_Game"};
 			};
 			class worldScriptModule
 			{
-				files[] = {"DiscordWebhookManager/scripts/4_World"};
-			};
-			class missionScriptModule {
 				value = "";
-				files[] = {"DiscordWebhookManager/scripts/5_Mission"};
+				files[] = {"scripts/4_World"};
+			};
+			class missionScriptModule
+			{
+				value = "";
+				files[] = {"scripts/5_Mission"};
 			};
 		};
 	};
