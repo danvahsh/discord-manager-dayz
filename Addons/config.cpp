@@ -27,9 +27,9 @@ class CfgMods
 	    hideName = 0;
 	    hidePicture = 1;
 	    name = "DiscordWebhookManager";
-	    credits = "76561198360529113";
-	    author = "DiscordManager by Midnight-DayZ";
-	    authorID = "76561198360529113";
+	    credits = "76561198727370586";
+	    author = "DiscordManager by danvahsh";
+	    authorID = "76561198727370586";
 	    version = "1.0";
 	    extra = 0;
 	    type = "mod";
