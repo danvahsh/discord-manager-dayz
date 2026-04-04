@@ -3,7 +3,7 @@ modded class MissionServer
 	override void OnInit()
 	{
 		super.OnInit();
-		Print("[DiscordWebhooks] OnInit hit");
+		Print("========== DISCORDWEBHOOKS MOD LOADED ==========");
 		
 		GetDiscordManagerConfig();
 		GetDiscordHook();
