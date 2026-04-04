@@ -72,6 +72,15 @@ modded class PlayerBase
 			embedColor = "9807270";
 		}
 
+		// Track for leaderboard
+		GetKillTracker().RecordDeath(victimName, victimIdentity.GetPlainId());
+		if (killerPlayer && killerPlayer != this)
+		{
+			PlayerIdentity killerIdentity2 = killerPlayer.GetIdentity();
+			if (killerIdentity2)
+				GetKillTracker().RecordKill(killerIdentity2.GetName(), killerIdentity2.GetPlainId());
+		}
+
 		ref DiscordJSON dataJSON = new DiscordJSON();
 
 		ref DiscordObject_SettingsMessage msg = new DiscordObject_SettingsMessage();
