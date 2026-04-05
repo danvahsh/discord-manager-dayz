@@ -1,4 +1,1 @@
 *.pbo
-bot/.env
-bot/node_modules/
-bot/bot-state.json

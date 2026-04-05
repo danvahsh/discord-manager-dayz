@@ -4,6 +4,8 @@ class JSON_CFG_D_MANAGER
 	string WebHookURL_KillFeed					= "";
 	string WebHookURL_Admin						= "";
 	string WebHookURL_ServerStatus				= "";
+	string BotURL_KillTracker					= "";
+	string BotAPIKey							= "";
 }
 class DiscordWebhookManagerConfig
 {

@@ -7,7 +7,6 @@ modded class MissionServer
 		
 		GetDiscordManagerConfig();
 		GetDiscordHook();
-		GetKillTracker();
 
 		ref JSON_CFG_D_MANAGER cfg = GetDiscordManagerConfig().DataCfg;
 

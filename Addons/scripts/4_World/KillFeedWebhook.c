@@ -72,14 +72,20 @@ modded class PlayerBase
 			embedColor = "9807270";
 		}
 
-		// Track for leaderboard
-		GetKillTracker().RecordDeath(victimName, victimIdentity.GetPlainId());
+		// Post to leaderboard bot
+		string trackCause = (causeOfDeath == "PvP Kill") ? "pvp" : "other";
+		string trackKillerId = "";
+		string trackKillerName = "";
 		if (killerPlayer && killerPlayer != this)
 		{
-			PlayerIdentity killerIdentity2 = killerPlayer.GetIdentity();
-			if (killerIdentity2)
-				GetKillTracker().RecordKill(killerIdentity2.GetName(), killerIdentity2.GetPlainId());
+			PlayerIdentity killerIdentityBot = killerPlayer.GetIdentity();
+			if (killerIdentityBot)
+			{
+				trackKillerName = killerIdentityBot.GetName();
+				trackKillerId = killerIdentityBot.GetPlainId();
+			}
 		}
+		GetKillTracker().PostEvent(trackKillerName, trackKillerId, victimName, victimIdentity.GetPlainId(), trackCause);
 
 		ref DiscordJSON dataJSON = new DiscordJSON();
 
