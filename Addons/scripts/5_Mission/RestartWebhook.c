@@ -19,6 +19,7 @@ modded class MissionServer
 		dataJSON.SetEmbeds(embeds);
 
 		GetDiscordHook().Send("serverstatus", dataJSON);
+		GetKillTracker().Ping();
 	}
 
 	override void OnMissionFinish()

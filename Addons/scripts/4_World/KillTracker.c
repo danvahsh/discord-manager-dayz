@@ -1,6 +1,24 @@
 class KillTracker
 {
-	void PostEvent(string killerName, string killerId, string victimName, string victimId, string cause)
+	void Ping()
+	{
+		string botUrl = GetDiscordManagerConfig().DataCfg.BotURL_KillTracker;
+		if (botUrl == "") return;
+
+		string apiKey = GetDiscordManagerConfig().DataCfg.BotAPIKey;
+
+		string json = "{\"apiKey\":\"" + apiKey + "\",\"cause\":\"ping\"}";
+
+		RestCallback cbx = new DiscordCallBack;
+		RestApi clCore = GetRestApi();
+		if (!clCore) clCore = CreateRestApi();
+
+		RestContext ctx = clCore.GetRestContext(botUrl);
+		ctx.SetHeader("application/json");
+		ctx.POST(cbx, "", json);
+	}
+
+	void PostEvent(string killerName, string killerId, string victimName, string victimId, string cause, string weapon = "", int distance = 0, int locX = 0, int locZ = 0)
 	{
 		string botUrl = GetDiscordManagerConfig().DataCfg.BotURL_KillTracker;
 		if (botUrl == "") return;
@@ -9,6 +27,7 @@ class KillTracker
 
 		killerName.Replace("\"", "\\\"");
 		victimName.Replace("\"", "\\\"");
+		weapon.Replace("\"", "\\\"");
 
 		string json = "{";
 		json += "\"apiKey\":\"" + apiKey + "\",";
@@ -16,7 +35,11 @@ class KillTracker
 		json += "\"killerId\":\"" + killerId + "\",";
 		json += "\"victimName\":\"" + victimName + "\",";
 		json += "\"victimId\":\"" + victimId + "\",";
-		json += "\"cause\":\"" + cause + "\"";
+		json += "\"cause\":\"" + cause + "\",";
+		json += "\"weapon\":\"" + weapon + "\",";
+		json += "\"distance\":" + distance + ",";
+		json += "\"locX\":" + locX + ",";
+		json += "\"locZ\":" + locZ;
 		json += "}";
 
 		RestCallback cbx = new DiscordCallBack;

@@ -85,7 +85,9 @@ modded class PlayerBase
 				trackKillerId = killerIdentityBot.GetPlainId();
 			}
 		}
-		GetKillTracker().PostEvent(trackKillerName, trackKillerId, victimName, victimIdentity.GetPlainId(), trackCause);
+		vector victimPos = GetPosition();
+		int distInt = distance.ToInt();
+		GetKillTracker().PostEvent(trackKillerName, trackKillerId, victimName, victimIdentity.GetPlainId(), trackCause, weaponName, distInt, victimPos[0], victimPos[2]);
 
 		ref DiscordJSON dataJSON = new DiscordJSON();
 
@@ -104,6 +106,10 @@ modded class PlayerBase
 
 		if (distance != "")
 			embeds.SetEmbedField("Distance", distance, true);
+
+		vector pos = GetPosition();
+		string location = string.Format("%1 / %2", Math.Round(pos[0]), Math.Round(pos[2]));
+		embeds.SetEmbedField("Location (X/Z)", location, true);
 
 		dataJSON.SetSettings(msg);
 		dataJSON.SetEmbeds(embeds);
