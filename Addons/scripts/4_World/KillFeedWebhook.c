@@ -10,11 +10,12 @@ modded class PlayerBase
 		if (!victimIdentity) return;
 
 		string victimName = victimIdentity.GetName();
-		string killerName;
-		string causeOfDeath;
+		string killerName = "";
+		string causeOfDeath = "";
 		string weaponName = "";
 		string distance = "";
-		string embedColor;
+		string embedColor = "9807270";
+		float dist = 0;
 
 		PlayerBase killerPlayer;
 		if (killer && killer.IsMan() && Class.CastTo(killerPlayer, killer))
@@ -47,7 +48,7 @@ modded class PlayerBase
 					weaponName = "Fists";
 				}
 
-				int dist = vector.Distance(GetPosition(), killerPlayer.GetPosition());
+				dist = vector.Distance(GetPosition(), killerPlayer.GetPosition());
 				distance = dist.ToString() + "m";
 
 				embedColor = "15158332";
@@ -73,7 +74,10 @@ modded class PlayerBase
 		}
 
 		// Post to leaderboard bot
-		string trackCause = (causeOfDeath == "PvP Kill") ? "pvp" : "other";
+		string trackCause = "other";
+		if (causeOfDeath == "PvP Kill")
+			trackCause = "pvp";
+
 		string trackKillerId = "";
 		string trackKillerName = "";
 		if (killerPlayer && killerPlayer != this)
@@ -86,8 +90,9 @@ modded class PlayerBase
 			}
 		}
 		vector victimPos = GetPosition();
-		int distInt = distance.ToInt();
-		GetKillTracker().PostEvent(trackKillerName, trackKillerId, victimName, victimIdentity.GetPlainId(), trackCause, weaponName, distInt, victimPos[0], victimPos[2]);
+		float locX = victimPos[0];
+		float locZ = victimPos[2];
+		GetKillTracker().PostEvent(trackKillerName, trackKillerId, victimName, victimIdentity.GetPlainId(), trackCause, weaponName, dist, locX, locZ);
 
 		ref DiscordJSON dataJSON = new DiscordJSON();
 
@@ -108,7 +113,7 @@ modded class PlayerBase
 			embeds.SetEmbedField("Distance", distance, true);
 
 		vector pos = GetPosition();
-		string location = string.Format("%1 / %2", Math.Round(pos[0]), Math.Round(pos[2]));
+		string location = pos[0].ToString() + " / " + pos[2].ToString();
 		embeds.SetEmbedField("Location (X/Z)", location, true);
 
 		dataJSON.SetSettings(msg);

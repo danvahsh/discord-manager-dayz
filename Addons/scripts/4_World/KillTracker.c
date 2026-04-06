@@ -18,7 +18,7 @@ class KillTracker
 		ctx.POST(cbx, "", json);
 	}
 
-	void PostEvent(string killerName, string killerId, string victimName, string victimId, string cause, string weapon = "", int distance = 0, int locX = 0, int locZ = 0)
+	void PostEvent(string killerName, string killerId, string victimName, string victimId, string cause, string weapon = "", float distance = 0, float locX = 0, float locZ = 0)
 	{
 		string botUrl = GetDiscordManagerConfig().DataCfg.BotURL_KillTracker;
 		if (botUrl == "") return;
@@ -37,9 +37,9 @@ class KillTracker
 		json += "\"victimId\":\"" + victimId + "\",";
 		json += "\"cause\":\"" + cause + "\",";
 		json += "\"weapon\":\"" + weapon + "\",";
-		json += "\"distance\":" + distance + ",";
-		json += "\"locX\":" + locX + ",";
-		json += "\"locZ\":" + locZ;
+		json += "\"distance\":" + Math.Round(distance) + ",";
+		json += "\"locX\":" + Math.Round(locX) + ",";
+		json += "\"locZ\":" + Math.Round(locZ);
 		json += "}";
 
 		RestCallback cbx = new DiscordCallBack;
