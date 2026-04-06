@@ -25,9 +25,9 @@ class KillTracker
 
 		string apiKey = GetDiscordManagerConfig().DataCfg.BotAPIKey;
 
-		killerName.Replace("\"", "\\\"");
-		victimName.Replace("\"", "\\\"");
-		weapon.Replace("\"", "\\\"");
+		killerName.Replace("\"", "");
+		victimName.Replace("\"", "");
+		weapon.Replace("\"", "");
 
 		string json = "{";
 		json += "\"apiKey\":\"" + apiKey + "\",";
